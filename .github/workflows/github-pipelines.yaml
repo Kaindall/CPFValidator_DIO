@@ -59,6 +59,12 @@ jobs:
       name: 'Development'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     steps:
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_1CBDAA0AFF464EBC901451DAD8E9CB7C }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B3C6E55B84DC41F5B1EF752CE006C3CC }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EB434347497A47CE8B9CF80F276004EC }}
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
